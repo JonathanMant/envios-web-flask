@@ -5,15 +5,31 @@ import logging
 from logging import config
 from sqlalchemy.orm import Session
 
-from src.domain.bulk.bulk_exception import BulkIdAlreadyExistsError, BulksNotFoundError
+from src.domain.bulk.bulk_exception import (
+    BulkIdAlreadyExistsError,
+    BulksNotFoundError
+)
 from src.domain.bulk.bulk_repository import BulkRepository
-from src.infrastructure.sqlite.bulk.bulk_query_service import BulkQueryServiceImpl
-from src.infrastructure.sqlite.bulk.bulk_repository import BulkRepositoryImpl, BulkCommandUseCaseUnitOfWorkImpl
-from src.infrastructure.sqlite.database import SessionLocal, create_tables
-from src.usecase.bulk.bulk_command_usecase import BulkCommandUseCase, BulkCommandUseCaseUnitOfWork, \
+from src.infrastructure.sqlite.bulk.bulk_query_service import (
+    BulkQueryServiceImpl
+)
+from src.infrastructure.sqlite.bulk.bulk_repository import (
+    BulkRepositoryImpl,
+    BulkCommandUseCaseUnitOfWorkImpl
+)
+from src.infrastructure.sqlite.database import (
+    SessionLocal,
+    create_tables
+)
+from src.usecase.bulk.bulk_command_usecase import (
+    BulkCommandUseCase,
+    BulkCommandUseCaseUnitOfWork,
     BulkCommandUseCaseImpl
+)
 from src.usecase.bulk.bulk_query_service import BulkQueryService
-from src.usecase.bulk.bulk_query_usecase import BulkQueryUseCase, BulkQueryUseCaseImpl
+from src.usecase.bulk.bulk_query_usecase import (
+    BulkQueryUseCase, BulkQueryUseCaseImpl
+)
 
 config.fileConfig("logging.conf", disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
