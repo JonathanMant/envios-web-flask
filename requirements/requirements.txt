@@ -1,4 +1,6 @@
-Flask==2.2.2
+Flask
 sqlalchemy
 pydantic
-abc
+pytest
+psycopg2
+flasgger
