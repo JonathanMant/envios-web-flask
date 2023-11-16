@@ -16,7 +16,7 @@ class BulkQueryServiceImpl(BulkQueryService):
 
     def find_by_status(self, status: int) -> List[BulkReadModel]:
         try:
-            bulks_dto = self.session.query(BulkDTO).filter_by(id=id).all()
+            bulks_dto = self.session.query(BulkDTO).filter_by(status=status).all()
         except NoResultFound:
             return None
         except:
@@ -25,4 +25,7 @@ class BulkQueryServiceImpl(BulkQueryService):
         if len(bulks_dto) == 0:
             return []
 
-        return list(map(lambda bulk_dto: bulk_dto.to_read_model(), bulks_dto))
+        return list(map(
+            lambda bulk_dto: bulk_dto.to_read_model().to_dict(),
+            bulks_dto
+        ))

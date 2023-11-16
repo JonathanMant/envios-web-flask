@@ -37,9 +37,9 @@ class BulkRepositoryImpl(BulkRepository):
         except:
             raise
 
-    def find_by_id(self, idbulk: int) -> Optional[Bulk]:
+    def find_by_name(self, name: str) -> Optional[Bulk]:
         try:
-            bulk_dto = self.session.query(BulkDTO).filter_by(idbulk=idbulk).one()
+            bulk_dto = self.session.query(BulkDTO).filter_by(name=name).one()
         except NoResultFound:
             return None
         except:

@@ -16,5 +16,5 @@ class BulkRepository(ABC):
         ...
 
     @abstractmethod
-    def find_by_id(self, idbulk: int) -> Optional[Bulk]:
+    def find_by_name(self, name: str) -> Optional[Bulk]:
         ...

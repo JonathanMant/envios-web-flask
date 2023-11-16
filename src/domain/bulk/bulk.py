@@ -4,13 +4,13 @@ from typing import Optional
 class Bulk:
     def __init__(
             self,
-            bulk_id: int,
             idbulk: int,
             status: int,
             name: str,
+            id: Optional[int] = None,
             retries: Optional[int] = None,
     ):
-        self.bulk_id: int = bulk_id
+        self.id: int = id
         self.idbulk = idbulk
         self.status: int = status
         self.name: str = name
@@ -18,6 +18,6 @@ class Bulk:
 
     def __eq__(self, obj: object) -> bool:
         if isinstance(obj, Bulk):
-            return self.bulk_id == obj.bulk_id
+            return self.id == obj.id
         return False
 

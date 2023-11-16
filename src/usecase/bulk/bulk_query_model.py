@@ -18,9 +18,18 @@ class BulkReadModel(BaseModel):
     @staticmethod
     def from_entity(bulk: Bulk) -> "BulkReadModel":
         return BulkReadModel(
-            id=bulk.bulk_id,
+            id=bulk.id,
             idbulk=bulk.idbulk,
             status=bulk.status,
             name=bulk.name,
             retries=bulk.retries,
         )
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'idbulk': self.idbulk,
+            'status': self.status,
+            'name': self.name,
+            'retries': self.retries
+        }

@@ -7,16 +7,16 @@ from src.usecase.bulk.bulk_query_model import BulkReadModel
 
 
 class BulkDTO(Base):
-    __tablename__ = 'bulk'
+    __tablename__ = 'ElementsToProcess'
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    idbulk: Mapped[int] = mapped_column(unique=True, nullable=False)
+    idbulk: Mapped[int] = mapped_column(nullable=False)
     status: Mapped[int] = mapped_column(nullable=False)
     name: Mapped[str] = mapped_column(String(100), nullable=False)
     retries: Mapped[int] = mapped_column(nullable=True)
 
     def to_entity(self) -> Bulk:
         return Bulk(
-            bulk_id=self.id,
+            id=self.id,
             idbulk=self.idbulk,
             status=self.status,
             name=self.name,
@@ -25,7 +25,7 @@ class BulkDTO(Base):
 
     def to_read_model(self) -> BulkReadModel:
         return BulkReadModel(
-            bulk_id=self.id,
+            id=self.id,
             idbulk=self.idbulk,
             status=self.status,
             name=self.name,
@@ -35,7 +35,6 @@ class BulkDTO(Base):
     @staticmethod
     def from_entity(bulk: Bulk) -> "BulkDTO":
         return BulkDTO(
-            id=bulk.bulk_id,
             idbulk=bulk.idbulk,
             status=bulk.status,
             name=bulk.name,
